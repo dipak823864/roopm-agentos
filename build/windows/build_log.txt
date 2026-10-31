@@ -1,0 +1,50 @@
+Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35719 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+roopm_render.cpp
+roopm_font.cpp
+roopm_image.cpp
+platform_win32.cpp
+app.cpp
+Generating Code...
+Microsoft (R) Incremental Linker Version 14.50.35719.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:build\windows\roopm_demo.exe 
+user32.lib 
+gdi32.lib 
+advapi32.lib 
+shell32.lib 
+shcore.lib 
+/SUBSYSTEM:WINDOWS 
+build\windows\obj\roopm_render.obj 
+build\windows\obj\roopm_font.obj 
+build\windows\obj\roopm_image.obj 
+build\windows\obj\platform_win32.obj 
+build\windows\obj\app.obj 
+build\windows\obj\quickjs_unity.obj 
+build\windows\obj\lexbor_unity.obj 
+build\windows\obj\blend2d_unity.obj 
+build\windows\obj\sizetable.obj 
+build\windows\obj\checksum_sse4_2.obj 
+build\windows\obj\otglyf_sse4_2.obj 
+build\windows\obj\pixelconverter_ssse3.obj 
+build\windows\obj\YGConfig.obj 
+build\windows\obj\YGEnums.obj 
+build\windows\obj\YGNode.obj 
+build\windows\obj\YGNodeLayout.obj 
+build\windows\obj\YGNodeStyle.obj 
+build\windows\obj\YGPixelGrid.obj 
+build\windows\obj\YGValue.obj 
+build\windows\obj\AbsoluteLayout.obj 
+build\windows\obj\Baseline.obj 
+build\windows\obj\Cache.obj 
+build\windows\obj\CalculateLayout.obj 
+build\windows\obj\Config.obj 
+build\windows\obj\event.obj 
+build\windows\obj\FlexLine.obj 
+build\windows\obj\LayoutResults.obj 
+build\windows\obj\Log.obj 
+build\windows\obj\Node.obj 
+build\windows\obj\PixelGrid.obj 
+build\windows\obj\AssertFatal.obj 
