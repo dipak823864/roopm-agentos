@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Kit</title>
+    <link rel="stylesheet" href="studio.css">
+    <script src="studio.js"></script>
+</head>
+<body>
+    <div id="st-drawer-backdrop" class="st-drawer-backdrop closed" onclick="toggleStudioDrawer()"></div>
+    <aside id="st-sidebar-drawer" class="st-drawer-overlay closed">
+        <div class="st-drawer-head">
+            <div class="st-nav-left">
+                <img src="RoopM_logo.svg" class="st-real-logo">
+                <span class="st-brand-name">RoopM Pro</span>
+            </div>
+            <button class="st-close-btn" onclick="toggleStudioDrawer()">Close</button>
+        </div>
+
+        <div class="st-user-card">
+            <span style="font-size: 13px; font-weight: 800; color: #0f172a;">Dipak Patel</span>
+            <span style="font-size: 11px; color: #64748b;">Pro Design Workspace • Active</span>
+        </div>
+
+        <a href="index.html" class="st-drawer-link">1. Home Dashboard</a>
+        <a href="templates.html" class="st-drawer-link">2. Template Gallery</a>
+        <a href="analytics.html" class="st-drawer-link">3. Exports &amp; Storage</a>
+        <a href="settings.html" class="st-drawer-link active">4. Brand Kit &amp; Settings</a>
+
+        <div class="st-user-card" style="margin-top: 8px;">
+            <span style="font-size: 11px; font-weight: 700; color: #334155;">Cloud Storage (72%)</span>
+            <progress value="72" max="100"></progress>
+            <span style="font-size: 10px; color: #64748b;">7.2 GB of 10 GB Used</span>
+        </div>
+    </aside>
+
+    <header class="st-navbar">
+        <div class="st-nav-left">
+            <button class="st-icon-btn" onclick="toggleStudioDrawer()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2.2">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+            <img src="RoopM_logo.svg" class="st-real-logo">
+            <span class="st-brand-name">Brand Kit</span>
+        </div>
+        <div class="st-nav-left">
+            <button class="st-btn-inspect" title="Toggle Live Box-Model Inspector (F12)" onclick="toggleInspectorHud()">Inspect (F12)</button>
+            <a href="templates.html" class="st-create-btn" title="Open Pro Template Gallery">+ Create</a>
+        </div>
+    </header>
+
+    <div id="st-status-msg" class="st-banner-ok">✓ Customize Your Brand Kit — Changes Save to Disk (workspace/.localstorage.txt)</div>
+
+    <form id="st-brand-form" class="st-panel" onsubmit="saveBrandSettings()" onreset="resetBrandSettings()">
+        <span class="st-panel-title">1. Workspace Identity, Dropdown &amp; Color</span>
+        <input id="st-brand-input" type="text" class="st-search-input" value="RoopM Creative Studio">
+        <label style="font-size: 11.5px; font-weight: 700; color: #475569;">DEFAULT EXPORT FORMAT (DROPDOWN MENU):</label>
+        <select id="st-export-select" class="st-select-box" onchange="onFormatDropdownChange()">
+            <option>PDF Vector 300 DPI</option>
+            <option>PNG Lossless 4K</option>
+            <option>SVG Illustrator Curves</option>
+            <option>WebP Ultra Compact</option>
+        </select>
+        <div class="st-row" style="justify-content: space-between;">
+            <div class="st-row">
+                <label style="font-size: 12px; font-weight: 700;">Grid Columns:</label>
+                <input id="st-grid-num" type="number" min="1" max="24" step="1" value="12">
+            </div>
+            <div class="st-row">
+                <label style="font-size: 12px; font-weight: 700;">Brand Swatch:</label>
+                <input id="st-brand-col" type="color" value="#4f46e5">
+            </div>
+        </div>
+
+        <div class="st-panel-head" style="margin-top: 4px;">
+            <span class="st-panel-title">2. Raster &amp; PDF Export Quality</span>
+            <span id="st-qual-badge" class="st-badge">DPI Quality: 90%</span>
+        </div>
+        <input id="st-qual-slider" type="range" min="10" max="100" value="90" oninput="syncQualitySlider()">
+        <progress id="st-qual-prog" value="90" max="100"></progress>
+        <div class="st-row">
+            <div>
+                <input id="rb-rgb" type="radio" name="cspace" value="rgb" checked>
+                <label style="font-size: 12px; font-weight: 600;">sRGB Display</label>
+            </div>
+            <div>
+                <input id="rb-cmyk" type="radio" name="cspace" value="cmyk">
+                <label style="font-size: 12px; font-weight: 600;">CMYK Print</label>
+            </div>
+            <div>
+                <input id="cb-bleed" type="checkbox" checked>
+                <label style="font-size: 12px; font-weight: 600;">Include 3mm Bleed</label>
+            </div>
+        </div>
+
+        <label style="font-size: 11.5px; font-weight: 700; color: #475569;">MULTI-LINE BRAND GUIDELINES (&lt;textarea&gt; — Press Enter for New Line):</label>
+        <textarea id="st-brand-notes" class="st-textarea">Line 1: RoopM Vector PDF 300 DPI Engine
+Line 2: Bilingual Gujarati &amp; Inter Sub-Pixel Fonts
+Line 3: Click here and press Enter to add lines...</textarea>
+        <div class="st-row">
+            <button type="submit" class="st-create-btn" title="Save All Settings to Disk (.localstorage.txt)">✓ Save Brand Preferences</button>
+            <button type="reset" class="st-btn-reset" title="Reset All Fields to Original Defaults">↺ Reset Defaults</button>
+        </div>
+    </form>
+
+    <nav class="st-bottom-dock">
+        <a href="index.html" class="st-dock-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2">
+                <path d="M 3 10 L 12 3 L 21 10 V 20 H 3 Z"></path>
+            </svg>
+            <span class="st-dock-lbl">Home</span>
+        </a>
+        <a href="templates.html" class="st-dock-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+            </svg>
+            <span class="st-dock-lbl">Templates</span>
+        </a>
+        <a href="templates.html" class="st-dock-plus">+</a>
+        <a href="analytics.html" class="st-dock-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span class="st-dock-lbl">Exports</span>
+        </a>
+        <a href="settings.html" class="st-dock-item active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2.2">
+                <circle cx="12" cy="12" r="8"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span class="st-dock-lbl">Settings</span>
+        </a>
+    </nav>
+</body>
+</html>

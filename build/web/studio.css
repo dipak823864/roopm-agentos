@@ -1,0 +1,621 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --st-bg: #f4f6fb;
+    --st-surface: #ffffff;
+    --st-border: #cbd5e1;
+    --st-border-soft: #e2e8f0;
+    --st-text: #0f172a;
+    --st-sub: #475569;
+    --st-muted: #64748b;
+    --st-indigo: #4f46e5;
+    --st-violet: #7c3aed;
+    --st-emerald: #059669;
+}
+
+body {
+    background-color: var(--st-bg);
+    color: var(--st-text);
+    width: 100%;
+    padding: 10px 12px 82px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 🔝 1. CLEAN PROFESSIONAL TOP BAR */
+.st-navbar {
+    background-color: var(--st-surface);
+    border: 1px solid var(--st-border-soft);
+    border-radius: 14px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.st-nav-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+}
+
+.st-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background-color: #f1f5f9;
+    border: 1px solid var(--st-border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.st-logo-box {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.st-brand-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--st-text);
+}
+
+.st-create-btn {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    padding: 7px 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* 🗂️ 2. TRUE SLIDE-OVER OVERLAY SIDEBAR DRAWER (position: fixed — Never squeezes the page!) */
+.st-drawer-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    border-right: 1.5px solid #cbd5e1;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 900;
+}
+
+.st-drawer-overlay.closed {
+    display: none;
+}
+
+.st-drawer-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.st-user-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.st-drawer-link {
+    width: 100%;
+    background-color: #f8fafc;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.st-drawer-link.active {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+}
+
+.st-close-btn {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* 🌟 3. HERO BANNER WITH SEARCH */
+.st-hero {
+    background: linear-gradient(135deg, #312e81, #4f46e5, #7c3aed);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #ffffff;
+}
+
+.st-hero-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.st-hero-sub {
+    font-size: 11.5px;
+    color: #e0e7ff;
+}
+
+.st-search-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #c7d2fe;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-size: 12px;
+}
+
+/* 🏷️ 4. CATEGORY FILTER PILLS */
+.st-pills-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.st-pill {
+    flex: 1 1 72px;
+    background-color: #ffffff;
+    color: #475569;
+    border: 1px solid var(--st-border);
+    border-radius: 9px;
+    padding: 7px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.st-pill.active {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5;
+}
+
+/* 📐 5. 2x2 DESIGN FORMATS GRID */
+.st-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.st-format-card {
+    background-color: var(--st-surface);
+    border: 1px solid var(--st-border-soft);
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.st-fmt-preview {
+    width: 100%;
+    height: 54px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.bg-grad-insta { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+.bg-grad-doc   { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+.bg-grad-yt    { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+.bg-grad-brand { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+
+.st-fmt-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: #312e81;
+}
+
+.st-fmt-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--st-text);
+}
+
+.st-fmt-dim {
+    font-size: 10.5px;
+    color: var(--st-muted);
+}
+
+.st-btn-open {
+    width: 100%;
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
+    border-radius: 7px;
+    padding: 6px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* 📦 6. RECENT PROJECTS & PANELS */
+.st-panel {
+    background-color: var(--st-surface);
+    border: 1px solid var(--st-border-soft);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.st-panel-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.st-panel-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--st-text);
+}
+
+.st-badge {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.st-banner-ok {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    border-radius: 9px;
+    padding: 9px 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+/* 🖼️ TEMPLATE GALLERY CARDS */
+.st-tpl-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+}
+
+.st-tpl-card {
+    flex: 1 1 155px;
+    background-color: var(--st-surface);
+    border: 1px solid var(--st-border-soft);
+    border-radius: 14px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.st-tpl-img {
+    width: 100%;
+    height: 104px;
+    border-radius: 9px;
+}
+
+/* 📊 TABLES */
+.st-table {
+    width: 100%;
+    border: 1px solid var(--st-border);
+    border-radius: 8px;
+}
+
+.st-th {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.st-td {
+    padding: 8px;
+    font-size: 11px;
+    color: var(--st-text);
+    border: 1px solid var(--st-border-soft);
+}
+
+.st-td-total {
+    background-color: #eef2ff;
+    color: #312e81;
+    padding: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    border: 1px solid var(--st-border);
+}
+
+.st-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+blockquote {
+    background-color: #f8fafc;
+    border-left: 3.5px solid #4f46e5;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+details {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 10px 12px;
+    gap: 6px;
+}
+
+summary {
+    padding-left: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* 📌 7. PINNED WHITE BOTTOM NAVIGATION DOCK (With SVG Icons & Labels!) */
+.st-bottom-dock {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    border-top: 1px solid #cbd5e1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4px 6px;
+    z-index: 700;
+}
+
+.st-dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+.st-dock-item.active {
+    background-color: #eef2ff;
+}
+
+.st-dock-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-align: center;
+}
+
+.st-dock-item.active .st-dock-lbl {
+    color: #4f46e5;
+    font-weight: 800;
+}
+
+.st-dock-plus {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    border: 2.5px solid #ffffff;
+}
+
+.st-drawer-backdrop {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.45);
+    z-index: 850;
+}
+
+.st-drawer-backdrop.closed {
+    display: none;
+}
+
+.st-real-logo {
+    width: 32px;
+    height: 32px;
+}
+
+.st-format-card:hover {
+    background-color: #f8fafc;
+    border-color: #818cf8;
+    transform: translateY(-3px);
+}
+
+.st-dock-item:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+.st-drawer-link:hover {
+    background-color: #eef2ff;
+    border-color: #818cf8;
+    transform: translateY(-2px);
+}
+
+/* 🌟 Dashed Border Asset Dropzone */
+.st-dropzone {
+    width: 100%;
+    background-color: #f8fafc;
+    border: 2px dashed #94a3b8;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.st-dropzone:hover {
+    background-color: #eef2ff;
+    border-color: #4f46e5;
+    transform: translateY(-2px);
+}
+
+/* 🌟 Mixed Fixed + Fractional CSS Grid (95px 1fr 1fr) */
+.st-mixed-grid {
+    display: grid;
+    grid-template-columns: 95px 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+}
+
+/* 🌟 Nested Scrollable Activity Log Container (overflow-y: auto) */
+.st-scroll-log {
+    width: 100%;
+    height: 112px;
+    overflow-y: auto;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.st-log-item {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    padding: 6px 9px;
+    font-size: 11px;
+    color: #334155;
+    flex-shrink: 0;
+}
+
+.st-canvas-box {
+    width: 100%;
+    height: 92px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+}
+
+.st-select-box {
+    width: 100%;
+    height: 38px;
+    padding: 6px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-size: 12px;
+}
+
+kbd {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+/* 🌟 CSS3 ::before & ::after Pseudo-Element Showcase */
+.st-fmt-tag::before {
+    content: "✦ ";
+}
+
+.st-badge::after {
+    content: " ✓";
+}
+
+.st-textarea {
+    width: 100%;
+    height: 68px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.st-btn-reset {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+    padding: 7px 14px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.st-btn-inspect {
+    background-color: #0f172a;
+    color: #38bdf8;
+    border: 1px solid #334155;
+    border-radius: 9px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 700;
+}

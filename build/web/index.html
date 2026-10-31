@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoopM Studio</title>
+    <link rel="stylesheet" href="studio.css">
+    <script src="studio.js"></script>
+</head>
+<body>
+    <!-- 🗂️ SLIDE-OVER OVERLAY SIDEBAR DRAWER (Opens over page without squeezing layout!) -->
+    <div id="st-drawer-backdrop" class="st-drawer-backdrop closed" onclick="toggleStudioDrawer()"></div>
+    <aside id="st-sidebar-drawer" class="st-drawer-overlay closed">
+        <div class="st-drawer-head">
+            <div class="st-nav-left">
+                <img src="RoopM_logo.svg" class="st-real-logo">
+                <span class="st-brand-name">RoopM Pro</span>
+            </div>
+            <button class="st-close-btn" onclick="toggleStudioDrawer()">Close</button>
+        </div>
+
+        <div class="st-user-card">
+            <span style="font-size: 13px; font-weight: 800; color: #0f172a;">Dipak Patel</span>
+            <span style="font-size: 11px; color: #64748b;">Pro Design Workspace • Active</span>
+        </div>
+
+        <a href="index.html" class="st-drawer-link active">1. Home Dashboard</a>
+        <a href="templates.html" class="st-drawer-link">2. Template Gallery</a>
+        <a href="analytics.html" class="st-drawer-link">3. Exports & Storage</a>
+        <a href="settings.html" class="st-drawer-link">4. Brand Kit & Settings</a>
+
+        <div class="st-user-card" style="margin-top: 8px;">
+            <span style="font-size: 11px; font-weight: 700; color: #334155;">Cloud Storage (72%)</span>
+            <progress value="72" max="100"></progress>
+            <span style="font-size: 10px; color: #64748b;">7.2 GB of 10 GB Used</span>
+        </div>
+    </aside>
+
+    <!-- 🔝 TOP NAVIGATION BAR -->
+    <header class="st-navbar">
+        <div class="st-nav-left">
+            <button class="st-icon-btn" onclick="toggleStudioDrawer()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2.2">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+            <img src="RoopM_logo.svg" class="st-real-logo">
+            <span class="st-brand-name">RoopM Studio</span>
+        </div>
+        <div class="st-nav-left">
+            <button class="st-btn-inspect" title="Toggle Live Box-Model Inspector (F12)" onclick="toggleInspectorHud()">Inspect (F12)</button>
+            <a href="templates.html" class="st-create-btn" title="Open Pro Template Gallery">+ Create</a>
+        </div>
+    </header>
+
+    <section class="st-hero">
+        <span class="st-hero-title">What will you design today?</span>
+        <span class="st-hero-sub">Create vector posters, resumes, social stories & print layouts.</span>
+        <input id="st-search-box" type="text" class="st-search-input" value="Search 5,000+ Studio Templates...">
+    </section>
+
+    <div class="st-dropzone" onclick="createCanvasFormat('Custom SVG Import', 'Vector')">
+        <span style="font-size: 12.5px; font-weight: 800; color: #312e81;">+ Import SVG / Image Asset (Dashed Dropzone)</span>
+        <span style="font-size: 11px; color: #64748b;">RoopM &copy; 2026 &mdash; Supports Illustrator SVG, PNG &amp; JPG &rarr; Instant Vector</span>
+    </div>
+
+    <div class="st-pills-row">
+        <button id="cat-all" class="st-pill active" onclick="selectCategory('All Formats', 'cat-all')">All</button>
+        <button id="cat-social" class="st-pill" onclick="selectCategory('Social Media', 'cat-social')">Social</button>
+        <button id="cat-doc" class="st-pill" onclick="selectCategory('Print PDF', 'cat-doc')">Print PDF</button>
+        <button id="cat-video" class="st-pill" onclick="selectCategory('Video Thumbnails', 'cat-video')">Video</button>
+    </div>
+
+    <div id="st-status-msg" class="st-banner-ok">✓ Studio Workspace Ready • Tap Top-Left Menu or Any Format Below</div>
+
+    <section class="st-grid-2x2">
+        <div class="st-format-card">
+            <div class="st-fmt-preview bg-grad-insta">
+                <span class="st-fmt-tag">9 : 16 STORY</span>
+            </div>
+            <span class="st-fmt-name">Instagram Story</span>
+            <span class="st-fmt-dim">1080 x 1920 px</span>
+            <button class="st-btn-open" onclick="createCanvasFormat('Instagram Story', '1080x1920')">Create Blank</button>
+        </div>
+
+        <div class="st-format-card">
+            <div class="st-fmt-preview bg-grad-doc">
+                <span class="st-fmt-tag">A4 DOCUMENT</span>
+            </div>
+            <span class="st-fmt-name">Executive Resume</span>
+            <span class="st-fmt-dim">595 x 842 pt • PDF</span>
+            <button class="st-btn-open" onclick="createCanvasFormat('Executive Resume', 'A4 PDF')">Create Blank</button>
+        </div>
+
+        <div class="st-format-card">
+            <div class="st-fmt-preview bg-grad-yt">
+                <span class="st-fmt-tag">16 : 9 HD</span>
+            </div>
+            <span class="st-fmt-name">YouTube Cover</span>
+            <span class="st-fmt-dim">1280 x 720 px</span>
+            <button class="st-btn-open" onclick="createCanvasFormat('YouTube Cover', '1280x720')">Create Blank</button>
+        </div>
+
+        <div class="st-format-card">
+            <div class="st-fmt-preview bg-grad-brand">
+                <span class="st-fmt-tag">1 : 1 SQUARE</span>
+            </div>
+            <span class="st-fmt-name">Brand Logo Kit</span>
+            <span class="st-fmt-dim">1000 x 1000 px • SVG</span>
+            <button class="st-btn-open" onclick="createCanvasFormat('Brand Logo Kit', '1000x1000')">Create Blank</button>
+        </div>
+    </section>
+
+    <!-- 📌 PINNED BOTTOM NAVIGATION DOCK (With Crisp Vector SVG Icons!) -->
+    <nav class="st-bottom-dock">
+        <a href="index.html" class="st-dock-item active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2.2">
+                <path d="M 3 10 L 12 3 L 21 10 V 20 H 3 Z"></path>
+            </svg>
+            <span class="st-dock-lbl">Home</span>
+        </a>
+        <a href="templates.html" class="st-dock-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+            </svg>
+            <span class="st-dock-lbl">Templates</span>
+        </a>
+        <a href="templates.html" class="st-dock-plus">+</a>
+        <a href="analytics.html" class="st-dock-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span class="st-dock-lbl">Exports</span>
+        </a>
+        <a href="settings.html" class="st-dock-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.2">
+                <circle cx="12" cy="12" r="8"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span class="st-dock-lbl">Settings</span>
+        </a>
+    </nav>
+</body>
+</html>
